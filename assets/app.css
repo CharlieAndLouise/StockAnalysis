@@ -1,0 +1,15 @@
+.grid-layout {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+}
+
+.left {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.main {
+    grid-column: 2;
+    grid-row: 1;
+}
