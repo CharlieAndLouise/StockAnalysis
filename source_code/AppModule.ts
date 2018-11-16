@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from 'AppComponent';
+import { StoreModule } from "@ngrx/store";
 
 @NgModule({
     declarations: [
         AppComponent
     ],
     imports: [ 
-        BrowserModule    
+        BrowserModule,
+        StoreModule.forRoot({})    
     ],
     bootstrap: [
         AppComponent
@@ -16,7 +18,7 @@ import { AppComponent } from 'AppComponent';
     providers: [],
 })
 export class AppModule {
-
+    
 }
 
 
