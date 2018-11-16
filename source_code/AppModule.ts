@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from 'AppComponent';
 import { StoreModule } from "@ngrx/store";
+import { StockModule } from 'stock/StockModule';
 
 @NgModule({
     declarations: [
@@ -9,6 +10,7 @@ import { StoreModule } from "@ngrx/store";
     ],
     imports: [ 
         BrowserModule,
+        StockModule,
         StoreModule.forRoot({})    
     ],
     bootstrap: [
@@ -18,7 +20,7 @@ import { StoreModule } from "@ngrx/store";
     providers: [],
 })
 export class AppModule {
-    
+
 }
 
 

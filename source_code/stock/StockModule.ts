@@ -1,12 +1,14 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { StoreModule } from "@ngrx/store";
 
 @NgModule({
     declarations: [],
     imports: [ 
-        CommonModule
+        CommonModule,
+        StoreModule.forFeature("Stock", {})
      ],
     exports: [],
     providers: [],
 })
-export class FeatureModule {}
+export class StockModule {}
