@@ -16,10 +16,11 @@ export class StockListComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         
-
-        this.store.pipe(select("stock")).subscribe((stockState: IStockState)=> {
+        this.store.pipe(select("Stock")).subscribe((stockState: IStockState)=> {
+            alert("State updated");
             if (stockState) {
                 this.stockState = stockState;
+                window["state"] = stockState;
             }
             else {
                 this.stockState = {
@@ -33,7 +34,6 @@ export class StockListComponent implements OnInit, OnDestroy {
     }
 
     setState() {
-        alert("AS");
         this.store.dispatch({
             type: "initialize",
             payload: {}

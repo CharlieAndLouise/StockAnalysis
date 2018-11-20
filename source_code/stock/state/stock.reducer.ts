@@ -5,8 +5,7 @@ const initialState: IStockState = {
     stockSymbols: ["MSFT", "APPL"]
 }
 
-export function reducer(state = initialState, action:any) {
-    
+export function reducer(state = initialState, action:any) {    
     var result = { ...state };
     switch(action.type) {
         case "initialize": 
@@ -14,6 +13,5 @@ export function reducer(state = initialState, action:any) {
             alert(JSON.stringify(result));
         break;
     }
-    return result;  
-
+    return result;
 }
