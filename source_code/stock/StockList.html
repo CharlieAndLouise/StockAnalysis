@@ -1,12 +1,6 @@
 <div>
-    <div>
-        <input type="text">
-        <span>&nbsp;&nbsp;&nbsp;</span>
-        <button>Add</button>
-    </div>
-    <div>
-        <ul>
-            
-        </ul>
-    </div>
+    <ul *ngFor="let symbol of stockState.stockSymbols">
+        <li>{{symbol}}</li>
+    </ul>
 </div>
+<button (click)="setState();">Change</button>
