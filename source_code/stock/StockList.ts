@@ -1,46 +1,28 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
-import { IStockState } from "./state/stock.state";
+import * as stockState from "./state/stock.state";
+import { Observable } from "rxjs";
+import { LoadFavoriteStockAction } from "./state/stock.action";
+import * as state from "./state/stock.selector";
 
 @Component({
     selector: "stock-list",
     templateUrl: "StockList.html"
 })
-export class StockListComponent implements OnInit, OnDestroy {
+export class StockListComponent implements OnInit {
     
-    constructor(private store: Store<IStockState>) { 
-
+    constructor(private store: Store<stockState.IStockState>) { 
+        
     }
 
-    stockState: IStockState;
+    stockState: stockState.IStockState;
+
+    favoriteStocks$: Observable<Array<string>>;
 
     ngOnInit() {
-        
-        this.store.pipe(select("Stock")).subscribe((stockState: IStockState)=> {
-            alert("State updated");
-            if (stockState) {
-                this.stockState = stockState;
-                window["state"] = stockState;
-            }
-            else {
-                this.stockState = {
-                    selectedStock: "MSFT",
-                    stockSymbols: ["MSFT", "APPL", "SP500"]
-                };
-            }
-        });
-
-        
-    }
-
-    setState() {
-        this.store.dispatch({
-            type: "initialize",
-            payload: {}
-        });
-    }
-
-    ngOnDestroy() {
-        
+        let actionLoad = new LoadFavoriteStockAction();
+        this.store.dispatch(actionLoad);   
+        this.favoriteStocks$ = this.store.pipe(select(state.favoriteStocks));
+            
     }
 }

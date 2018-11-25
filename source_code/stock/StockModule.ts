@@ -3,6 +3,9 @@ import { CommonModule } from "@angular/common";
 import { StockListComponent } from "./StockList";
 import { StoreModule } from "@ngrx/store";
 import { reducer } from "./state/stock.reducer";
+import { STOCK_FEATURE_NAME } from "./state/stock.state";
+import { EffectsModule } from "@ngrx/effects";
+import { StockEffect } from "./state/stock.effect";
 
 @NgModule({
     declarations: [
@@ -10,7 +13,8 @@ import { reducer } from "./state/stock.reducer";
     ],
     imports: [ 
         CommonModule,
-        StoreModule.forFeature("Stock", reducer)
+        StoreModule.forFeature(STOCK_FEATURE_NAME, reducer),
+        //EffectsModule.forFeature([StockEffect])
      ],
     exports: [
         StockListComponent

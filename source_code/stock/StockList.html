@@ -1,6 +1,6 @@
 <div>
-    <ul *ngFor="let symbol of stockState.stockSymbols">
+    <ul *ngFor="let symbol of favoriteStocks$ | async">
         <li>{{symbol}}</li>
     </ul>
 </div>
-<button (click)="setState();">Change</button>
+<button>Change</button>
