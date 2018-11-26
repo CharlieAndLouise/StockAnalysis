@@ -6,7 +6,9 @@ import { StoreModule } from "@ngrx/store";
 import { reducer } from "./state/stock.reducer";
 import { STOCK_FEATURE_NAME } from "./state/stock.state";
 import { EffectsModule } from "@ngrx/effects";
-import { StockEffect } from "./state/stock.effect";
+import { StockEffects } from "./state/stock.effect";
+import { StockService } from "./state/stock.service";
+import { HttpClientModule, HttpClientJsonpModule  } from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -15,13 +17,17 @@ import { StockEffect } from "./state/stock.effect";
     imports: [ 
         CommonModule,
         FormsModule,
+        HttpClientModule,
+        HttpClientJsonpModule,
         StoreModule.forFeature(STOCK_FEATURE_NAME, reducer),
-        //EffectsModule.forFeature([StockEffect])
+        EffectsModule.forFeature([StockEffects])
      ],
     exports: [
         StockListComponent
     ],
-    providers: [],
+    providers: [
+        
+    ],
 })
 export class StockModule {
     

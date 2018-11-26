@@ -13,3 +13,42 @@
     grid-column: 2;
     grid-row: 1;
 }
+
+.left-navigation {
+    max-width: 180px;
+}
+
+.left-navigation input {
+    width:110px;
+    margin: 1px 5px 10px 1px;
+}
+
+.left-navigation ul {
+    list-style-type: none;
+    width:100%;
+    background-color: #c8c8c8;
+    color: #212121;
+    padding: 0;
+    margin: 0;
+}
+
+.left-navigation ul li {
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+}
+
+.left-navigation ul li:hover {
+    background-color: #004578;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.left-navigation ul li.selected {
+    background-color: #0078d4;
+    color: #ffffff;
+}
+
+
+
