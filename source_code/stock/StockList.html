@@ -1,6 +1,12 @@
 <div>
+    <input type="text" [(ngModel)]="newStockSymbol" />
+    <button (click)="tryAddingStockSymbol();">Add</button>
+</div>
+<div>
     <ul *ngFor="let symbol of favoriteStocks$ | async">
-        <li>{{symbol}}</li>
+        <li><button>{{symbol}}</button></li>
     </ul>
 </div>
-<button>Change</button>
+
+
+

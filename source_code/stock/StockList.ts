@@ -15,14 +15,17 @@ export class StockListComponent implements OnInit {
         
     }
 
-    stockState: stockState.IStockState;
-
     favoriteStocks$: Observable<Array<string>>;
+
+    newStockSymbol: string = "";
 
     ngOnInit() {
         let actionLoad = new LoadFavoriteStockAction();
         this.store.dispatch(actionLoad);   
         this.favoriteStocks$ = this.store.pipe(select(state.favoriteStocks));
-            
+    }
+
+    tryAddingStockSymbol() {
+        alert(this.newStockSymbol);
     }
 }
