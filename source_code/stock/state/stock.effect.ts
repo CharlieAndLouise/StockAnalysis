@@ -25,7 +25,7 @@ export class StockEffects {
             )
         );
     }
-
+    /*
     @Effect()
     queryStockPrice$(): Observable<Action> {
         return this.actions$.pipe(
@@ -38,4 +38,5 @@ export class StockEffects {
             )
         );
     }
+    */
 }

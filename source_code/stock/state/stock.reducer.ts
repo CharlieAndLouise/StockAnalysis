@@ -1,12 +1,13 @@
 import * as stockState from "./stock.state";
 import * as utility from "../../Utility";
-import { StockAction, QueryStockSymbolAction, QueryStockSymbolSuccessAction, SelectStockAction, QueryStockPriceSuccessAction } from "./stock.action";
+import { StockAction, QueryStockSymbolAction, QueryStockSymbolSuccessAction, SelectStockAction, SelectRangeAction } from "./stock.action";
 import { ICompany, IPrice } from "./stock.model";
 
 const initialState: stockState.IStockState = {
     selectedStock: "",
     favoriteStocks: [],
-    selectedStockPrices: []
+    selectedStockPrices: [],
+    range: "1w"
 }
 
 export enum StockActionName {
@@ -15,8 +16,9 @@ export enum StockActionName {
     QUERY_STOCK_SYMBOL = "[STOCK] QUERY_STOCK_SYMBOL",
     QUERY_STOCK_SYMBOL_SUCCESS = "[STOCK] QUERY_STOCK_SYMBOL_SUCCESS",
     SELECT_STOCK = "[STOCK] SELECT_STOCK",
-    QUERY_STOCK_PRICE = "[STOCK] QUERY_STOCK_PRICE",
-    QUERY_STOCK_PRICE_SUCCESS = "[STOCK] QUERY_STOCK_PRICE_SUCCESS"
+    //QUERY_STOCK_PRICE = "[STOCK] QUERY_STOCK_PRICE",
+    //QUERY_STOCK_PRICE_SUCCESS = "[STOCK] QUERY_STOCK_PRICE_SUCCESS"
+    SELECT_RANGE = "[STOCK] SELECT_RANGE"
 }
 
 export function reducer(state = initialState, action:StockAction) {    
@@ -32,9 +34,14 @@ export function reducer(state = initialState, action:StockAction) {
         case StockActionName.SELECT_STOCK:
             selectStock(result, (<SelectStockAction>action).symbol);
         break;
+        /*
         case StockActionName.QUERY_STOCK_PRICE_SUCCESS:
             ON_SUCCESS_queryStockPrice(result, (<QueryStockPriceSuccessAction>action).prices);
         break;
+        */
+       case StockActionName.SELECT_RANGE:
+            selectRange(result, (<SelectRangeAction>action).range);
+       break;
     }
     return result;
 }
@@ -71,8 +78,14 @@ function selectStock(state:stockState.IStockState, symbol: string) {
     state.selectedStock = symbol;
 }
 
+/*
 function ON_SUCCESS_queryStockPrice(state: stockState.IStockState, prices: IPrice[]) {
     state.selectedStockPrices = prices;
+}
+*/
+
+function selectRange(state: stockState.IStockState, range: string) {
+    state.range = range;
 }
 
 

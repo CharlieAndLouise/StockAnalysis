@@ -23,7 +23,7 @@ export class SelectStockAction implements Action {
     constructor(public symbol: string) {}
     public type = StockActionName.SELECT_STOCK;
 }
-
+/*
 export class QueryStockPriceAction implements Action {
     constructor(public symbol: string, public range: string) { }
     public type = StockActionName.QUERY_STOCK_PRICE;    
@@ -33,9 +33,13 @@ export class QueryStockPriceSuccessAction implements Action {
     constructor(public prices: model.IPrice[]) {}
     public type = StockActionName.QUERY_STOCK_PRICE_SUCCESS;
 }
+*/
 
-
+export class SelectRangeAction implements Action {
+    constructor(public range: string) {}
+    public type = StockActionName.SELECT_RANGE;
+}
 
 export type StockAction = LoadFavoriteStockAction 
     | QueryStockSymbolAction | QueryStockSymbolSuccessAction
-    | SelectStockAction | QueryStockPriceSuccessAction;
+    | SelectStockAction | SelectRangeAction;

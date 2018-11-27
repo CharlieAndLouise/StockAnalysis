@@ -7,12 +7,13 @@ import { reducer } from "./state/stock.reducer";
 import { STOCK_FEATURE_NAME } from "./state/stock.state";
 import { EffectsModule } from "@ngrx/effects";
 import { StockEffects } from "./state/stock.effect";
-import { StockService } from "./state/stock.service";
 import { HttpClientModule, HttpClientJsonpModule  } from "@angular/common/http";
+import { StockChartComponent } from "./StockChart";
 
 @NgModule({
     declarations: [
-        StockListComponent
+        StockListComponent,
+        StockChartComponent
     ],
     imports: [ 
         CommonModule,
@@ -23,7 +24,8 @@ import { HttpClientModule, HttpClientJsonpModule  } from "@angular/common/http";
         EffectsModule.forFeature([StockEffects])
      ],
     exports: [
-        StockListComponent
+        StockListComponent,
+        StockChartComponent
     ],
     providers: [
         
