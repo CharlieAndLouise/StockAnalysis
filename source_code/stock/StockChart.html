@@ -1,0 +1,13 @@
+<div>
+    <div>
+        <span>Range&nbsp;&nbsp;&nbsp;</span>
+        <span>
+            <select style="width: 75px;" [ngModel]="range" (change)="changeRange($event);">
+                <option value="1d" selected>1d</option>
+                <option value="1m">1m</option>
+                <option value="1y">1y</option>
+            </select>
+        </span>
+    </div>
+    <div #chart></div>
+</div>

@@ -38,7 +38,7 @@ module.exports = (environment)=>{
                         minSize: 0
                     },
                     angular: {
-                        test: /[\\/]@angular[\\/]/,
+                        test: /[\\/]@angular[\\/]|@ngrx/,
                         name: "angular",
                         minSize: 0
                     }

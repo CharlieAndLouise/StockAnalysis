@@ -1,0 +1,15 @@
+<div class="left-navigation">
+    <div>
+        <input type="text" [(ngModel)]="newStockSymbol" />
+        <button style="width:50px;" (click)="tryAddingStockSymbol();">Add</button>
+    </div>
+    <div>
+        <ul class="left-navigation">
+            <li *ngFor="let symbol of favoriteStocks$ | async" 
+                [ngClass]="(selectedStock$ | async) === symbol? 'selected':''"
+                (click)="selectStock(symbol)"
+                >{{symbol}}</li>
+        </ul>
+    </div>
+</div>
+
