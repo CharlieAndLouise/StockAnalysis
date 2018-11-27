@@ -40,6 +40,12 @@ export class SelectRangeAction implements Action {
     public type = StockActionName.SELECT_RANGE;
 }
 
+export class ServiceErrorAction implements Action {
+    constructor(public message: string) { }
+    public type = StockActionName.SERVICE_ERROR;
+}
+
 export type StockAction = LoadFavoriteStockAction 
     | QueryStockSymbolAction | QueryStockSymbolSuccessAction
-    | SelectStockAction | SelectRangeAction;
+    | SelectStockAction | SelectRangeAction | ServiceErrorAction
+    | ServiceErrorAction;

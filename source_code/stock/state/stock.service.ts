@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
 import { Observable, of } from "rxjs";
 import * as model from "./stock.model";
+import { catchError } from "rxjs/operators";
 
 
 @Injectable({
@@ -27,6 +28,10 @@ export class StockService {
     }
 
     queryStockPrice(symbol: string, range: string): Observable<model.IPrice[]> {
-        return <Observable<model.IPrice[]>>this.http.jsonp(this.serviceUrl + `/stock/${symbol}/chart/${range}`, "callback");
+        console.log(symbol + "-" + range);
+        return <Observable<model.IPrice[]>>this.http.jsonp(this.serviceUrl + 
+            `/stock/${symbol}/chart/${range}`, "callback").pipe(
+                catchError(()=>of([]))
+            );
     }
 }

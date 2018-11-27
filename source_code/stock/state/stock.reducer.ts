@@ -1,13 +1,14 @@
 import * as stockState from "./stock.state";
 import * as utility from "../../Utility";
-import { StockAction, QueryStockSymbolAction, QueryStockSymbolSuccessAction, SelectStockAction, SelectRangeAction } from "./stock.action";
+import { StockAction, QueryStockSymbolAction, QueryStockSymbolSuccessAction, SelectStockAction, SelectRangeAction, ServiceErrorAction } from "./stock.action";
 import { ICompany, IPrice } from "./stock.model";
 
 const initialState: stockState.IStockState = {
     selectedStock: "",
     favoriteStocks: [],
     selectedStockPrices: [],
-    range: "1w"
+    range: "1d",
+    errorMessage: ""
 }
 
 export enum StockActionName {
@@ -18,7 +19,8 @@ export enum StockActionName {
     SELECT_STOCK = "[STOCK] SELECT_STOCK",
     //QUERY_STOCK_PRICE = "[STOCK] QUERY_STOCK_PRICE",
     //QUERY_STOCK_PRICE_SUCCESS = "[STOCK] QUERY_STOCK_PRICE_SUCCESS"
-    SELECT_RANGE = "[STOCK] SELECT_RANGE"
+    SELECT_RANGE = "[STOCK] SELECT_RANGE",
+    SERVICE_ERROR = "[STOCK] SERVICE_ERROR"
 }
 
 export function reducer(state = initialState, action:StockAction) {    
@@ -41,6 +43,9 @@ export function reducer(state = initialState, action:StockAction) {
         */
        case StockActionName.SELECT_RANGE:
             selectRange(result, (<SelectRangeAction>action).range);
+       break;
+       case StockActionName.SERVICE_ERROR:
+            sendServiceError(result, (<ServiceErrorAction>action).message);
        break;
     }
     return result;
@@ -88,5 +93,7 @@ function selectRange(state: stockState.IStockState, range: string) {
     state.range = range;
 }
 
-
+function sendServiceError(state: stockState.IStockState, message: string) {
+    state.errorMessage = message;
+}
 

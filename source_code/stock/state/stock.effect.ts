@@ -4,8 +4,8 @@ import { StockActionName } from "./stock.reducer";
 import { Action } from "@ngrx/store";
 import { StockService } from "./stock.service";
 import * as stockActions from "./stock.action";
-import { Observable } from "rxjs";
-import { map, flatMap } from "rxjs/operators";
+import { Observable, of } from "rxjs";
+import { map, flatMap, catchError } from "rxjs/operators";
 import { ICompany } from "./stock.model";
 
 
@@ -14,13 +14,18 @@ export class StockEffects {
     constructor(private actions$: Actions, private stockService: StockService) {}
 
     @Effect()
-    queryStockSymbol$(): Observable<Action> {
+    queryStockSymbol$(): Observable<stockActions.StockAction> {
         return this.actions$.pipe(
             ofType(StockActionName.QUERY_STOCK_SYMBOL),
             flatMap((action:stockActions.QueryStockSymbolAction)=>
                 this.stockService.queryStockSymbol(action.symbol).pipe(
                     map((result:ICompany) => 
-                        new stockActions.QueryStockSymbolSuccessAction(result))
+                        new stockActions.QueryStockSymbolSuccessAction(result)),
+                    catchError(
+                        (error)=>of(
+                            new stockActions.ServiceErrorAction("An error happens on service side.")
+                        )
+                    )
                 )       
             )
         );

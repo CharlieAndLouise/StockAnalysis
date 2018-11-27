@@ -2,9 +2,8 @@
     <div>
         <span>Range&nbsp;&nbsp;&nbsp;</span>
         <span>
-            <select [ngModel]="range" (change)="changeRange($event);">
+            <select style="width: 75px;" [ngModel]="range" (change)="changeRange($event);">
                 <option value="1d" selected>1d</option>
-                <option value="1w">1w</option>
                 <option value="1m">1m</option>
                 <option value="1y">1y</option>
             </select>

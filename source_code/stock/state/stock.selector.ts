@@ -9,3 +9,5 @@ export var selectedStock = createSelector(stockState, (state)=>state.selectedSto
 
 export var range = createSelector(stockState, (state)=> state.range);
 
+export var errorMessage = createSelector(stockState, (state)=> state.errorMessage);
+

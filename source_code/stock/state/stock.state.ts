@@ -7,5 +7,6 @@ export interface IStockState {
     favoriteStocks: string[];
     selectedStockPrices: IPrice[];
     range: string;
+    errorMessage: string;
 }
 
